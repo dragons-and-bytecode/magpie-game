@@ -10,8 +10,8 @@ int main(int argc, char const *argv[]) {
         .mode = WINDOW
     };
 
-    spark_init_gfx(&display);
-
+    spark_open_window(&display);
+    
     spark_sleep(5.0);
 
     spark_shutdown();

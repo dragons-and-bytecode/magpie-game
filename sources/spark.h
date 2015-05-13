@@ -17,7 +17,7 @@ typedef struct {
     Display_Mode mode;
 } Display;
 
-void spark_init_gfx(Display* display);
+void spark_open_window(Display* display);
 
 void spark_sleep(double seconds);
 
