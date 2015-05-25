@@ -2,12 +2,16 @@
 #include "base.h"
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 
-static bool initilized = false;
+void spark_init(){
+    SDL_Init(SDL_INIT_EVERYTHING);
+    IMG_Init(IMG_INIT_PNG);
+    TTF_Init();
+}
 
 void spark_open_window(Display* display){
-    if (!initilized)
-        SDL_Init(SDL_INIT_EVERYTHING);
 
     SDL_Window* window = SDL_CreateWindow(
         display->title,
@@ -24,5 +28,7 @@ void spark_sleep(double seconds){
 }
 
 void spark_shutdown(){
+    IMG_Quit();
     SDL_Quit();
+    TTF_Quit();
 }

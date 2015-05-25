@@ -4,7 +4,7 @@ BUILDDIR=.build
 
 CFLAGS  +=-Idepends/include
 LDFLAGS +=-Ldepends/lib/osx
-LDLIBS  +=-lSDL2 -lSDL2main
+LDLIBS  +=-lSDL2 -lSDL2main -lSDL2_image -lSDL2_ttf -lfreetype -lbz2 -lz
 
 SRCS=$(wildcard $(SOURCEDIR)/*.c)
 OBJS=$(patsubst $(SOURCEDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS))
@@ -19,3 +19,8 @@ $(BUILDDIR)/magpie-debug: $(OBJS)
 
 $(BUILDDIR):
 	mkdir -p $@
+
+.PHONY: clean
+
+clean:
+	rm -rf $(BUILDDIR)
