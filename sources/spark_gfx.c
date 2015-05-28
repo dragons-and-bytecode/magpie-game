@@ -21,6 +21,14 @@ void spark_open_window(Display* display){
         display->resolution.y,
         0
     );
+
+    SDL_Renderer* renderer = SDL_CreateRenderer(
+        window,
+        -1,
+        SDL_RENDERER_PRESENTVSYNC
+    );
+
+    
 }
 
 void spark_sleep(double seconds){

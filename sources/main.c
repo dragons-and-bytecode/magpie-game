@@ -1,5 +1,30 @@
 #include "spark.h"
 
+void run_example_scene() {
+    /*
+     * 1. Init scene
+     */
+
+    /*
+     * 2. create stuff
+     */
+
+
+    /*
+     * 3. display stuff
+     */
+
+
+    /*
+     * 4. wait
+     */
+
+    /*
+     * 5. exit
+     */
+
+}
+
 int main(int argc, char const *argv[]) {
     Display display = {
         .title = "Magpie",
