@@ -53,3 +53,21 @@ of the Scene Manager.
 
 
 [Node|children]
+
+
+## Information hiding via context
+
+    something* create_something(){
+        context_key ctx = context_create_unique_key();
+        something* self = /*...*/;
+        self->context = ctx;
+        return self;
+    }
+
+    void something_function(something self, int bla){
+        char* a_context_value = context_read(self->context, "Foo", "default");
+
+        // do stuff
+
+        context_write(self->context, "Foo", a_context_value);
+    }
