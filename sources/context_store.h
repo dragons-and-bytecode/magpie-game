@@ -1,5 +1,7 @@
 #pragma once
 
+#include "base.h"
+
 /**
  * @file
  *
@@ -40,8 +42,15 @@ typedef char* context_key;
  * A second call to ``context_init()`` would effectively void all context keys
  * generated before.
  *
+ * If you are unsure about the initialization state of the context library,
+ * check #context_is_initialized().
+ *
  */
 void context_init();
+
+bool context_is_initialized();
+
+void context_teardown();
 
 /**
  * creates a new unique id, and reserves it on the context store, to be used
@@ -80,3 +89,31 @@ void context_write(context_id context, context_key key, context_value value);
 context_value context_read( context_id context,
                             context_key key,
                             context_value default_value);
+
+
+/**
+ * Removes any entry from the given context at the given key, such that further
+ * reading from this key will yield NULL.
+ *
+ * @param context the context to remove from
+ * @param key     the key to remove from the context
+ */
+void context_remove(context_id context, context_key key);
+
+
+/**
+ * Returns the number of key|value pairs, stored in a given context.
+ *
+ *
+ * @param  context the context
+ * @return         the number of key|value pairs in the context
+ */
+unsigned int context_size(context_id context);
+
+
+/**
+ * Clear all entries from the given context.
+ *
+ * @param context the context_id to clear
+ */
+void context_clear(context_id context);
