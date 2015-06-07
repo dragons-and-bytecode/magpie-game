@@ -2,6 +2,13 @@ Feature: A simple Datastore, that gives further context to a function's
          Invocation, allowing the function to hold related data, without
          polluting the context argumnets.
 
+
+Scenario: Create the first context
+
+    Given the context_store is initialized
+     When I create the first context
+     Then the context_id should be 1
+
 Scenario: Write to a context
 
     Given the context_store is initialized

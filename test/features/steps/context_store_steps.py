@@ -67,6 +67,17 @@ def step_impl(context):
     target.context_remove(context.context_id, default_key)
 
 
+@when(u'I create the first context')
+def step_impl(context):
+    context.context_id = target.create_context();
+
+
+
+
+@then(u'the context_id should be 1')
+def step_impl(context):
+    context.context_id |should| equal_to(1)
+
 
 @then(u'my context should contain a single entry')
 def step_impl(context):

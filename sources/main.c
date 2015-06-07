@@ -26,6 +26,8 @@ void run_example_scene() {
 }
 
 int main(int argc, char const *argv[]) {
+    spark_init();
+
     Display display = {
         .title = "Magpie",
         .resolution = {

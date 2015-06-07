@@ -6,12 +6,15 @@
 #include <SDL2/SDL_ttf.h>
 
 void spark_init(){
+    context_init();
+
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(IMG_INIT_PNG);
     TTF_Init();
 }
 
 void spark_open_window(Display* display){
+    display->context = create_context();
 
     SDL_Window* window = SDL_CreateWindow(
         display->title,
@@ -21,6 +24,7 @@ void spark_open_window(Display* display){
         display->resolution.y,
         0
     );
+    context_write(display->context, "window", window);
 
     SDL_Renderer* renderer = SDL_CreateRenderer(
         window,
@@ -28,7 +32,7 @@ void spark_open_window(Display* display){
         SDL_RENDERER_PRESENTVSYNC
     );
 
-    
+    context_write(display->context, "renderer", renderer);
 }
 
 void spark_sleep(double seconds){
@@ -39,4 +43,6 @@ void spark_shutdown(){
     IMG_Quit();
     SDL_Quit();
     TTF_Quit();
+
+    context_teardown();
 }

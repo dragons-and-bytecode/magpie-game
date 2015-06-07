@@ -3,7 +3,7 @@ SOURCEDIR=sources
 BUILDDIR=.build
 OUTNAME=magpie
 
-CFLAGS  +=-Idepends/include
+CFLAGS  +=-Idepends/include -g
 LDFLAGS +=-Ldepends/lib/osx
 LDLIBS  +=-lSDL2 -lSDL2main -lSDL2_image -lSDL2_ttf -lfreetype -lbz2 -lz
 
