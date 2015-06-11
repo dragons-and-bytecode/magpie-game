@@ -1,6 +1,6 @@
 #include "spark.h"
 
-void run_example_scene() {
+void run_example_scene(Display* display) {
     /*
      * 1. Init scene
      */
@@ -9,6 +9,9 @@ void run_example_scene() {
      * 2. create stuff
      */
 
+    Image* logo = spark_create_image_from_file_in_display(
+        "assets/images/logo.png", display);
+    spark_display_immidiately(logo);
 
     /*
      * 3. display stuff
@@ -39,7 +42,9 @@ int main(int argc, char const *argv[]) {
 
     spark_open_window(&display);
 
-    spark_sleep(5.0);
+    run_example_scene(&display);
+
+    spark_sleep(2.0);
 
     spark_shutdown();
     return 0;

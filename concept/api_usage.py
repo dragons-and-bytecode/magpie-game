@@ -1,8 +1,9 @@
 from spark import *
 
-sweep = load_sound("rising_sweep")
-logo = load_image("Logo")
-logo.position = Position.centered
+sweep = sound("rising_sweep")
+logo =  image("Logo")
+screen.display(logo, at_position=screen.center_position)
+
 resize_proportional(logo, target_width=screen.width * .7)
 tint(screen, color=Color.White)
 
@@ -15,8 +16,8 @@ def fade_in(frame):
     logo.transparancy = max(1.0, frame.delta_t)
 
 
-bang = load_sound("deep_bang")
-logo_font = load_font("Arial")
+bang = sound("deep_bang")
+logo_font = font("Arial")
 title_text = logo_font.render("Some great game", size=72)
 
 @once(at=second(3))
@@ -30,3 +31,19 @@ def display_title():
 @sequence(lasts=seconds(2))
 def text_fade(frame):
     text_title.transparency = min(0.0, 2.0 - frame.delta_t)
+
+
+#
+# Better version for display control
+#
+# A display defines what is displayed on screen, while a screen can have any
+# number of linked displayes, of which only one can be active at a time.
+#
+
+display = Display()
+
+display.add(logo, at_position=vector(.5, .2))
+display.add(title_text, at_position=below(logo, distance=.05))
+
+screen.add(display)
+screen.activate(display)

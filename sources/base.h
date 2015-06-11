@@ -8,4 +8,9 @@ typedef int bool;
 
 #define NULL 0x00
 
+typedef struct {
+    double x;
+    double y;
+} Vector2D;
+
 #endif

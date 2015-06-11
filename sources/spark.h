@@ -10,11 +10,6 @@ typedef enum {
 } Display_Mode;
 
 typedef struct {
-    double x;
-    double y;
-} Vector2D;
-
-typedef struct {
     const char* title;
     Vector2D resolution;
     Display_Mode mode;
@@ -44,7 +39,7 @@ void spark_open_window(Display* display);
 
 void spark_sleep(double seconds);
 
-
+#include "spark_image.h"
 
 void spark_shutdown();
 
